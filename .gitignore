@@ -11,3 +11,6 @@
 *.lai
 *.la
 *.a
+
+#While List Names
+!lib*.la
