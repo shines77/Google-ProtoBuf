@@ -110,7 +110,7 @@ void DefaultLogHandler(LogLevel level, const char* filename, int line,
 
   // We use fprintf() instead of cerr because we want this to work at static
   // initialization time.
-  fprintf(stderr, "libprotobuf %s %s:%d] %s\n",
+  fprintf(stderr, "[libprotobuf %s %s:%d] %s\n",
           level_names[level], filename, line, message.c_str());
   fflush(stderr);  // Needed on MSVC.
 }
@@ -318,6 +318,24 @@ void Mutex::AssertHeld() {
 }
 
 #endif
+
+// ===================================================================
+// emulates google3/util/endian/endian.h
+//
+// TODO(xiaofeng): PROTOBUF_LITTLE_ENDIAN is unfortunately defined in
+// google/protobuf/io/coded_stream.h and therefore can not be used here.
+// Maybe move that macro definition here in the furture.
+uint32 ghtonl(uint32 x) {
+  union {
+    uint32 result;
+    uint8 result_array[4];
+  };
+  result_array[0] = static_cast<uint8>(x >> 24);
+  result_array[1] = static_cast<uint8>((x >> 16) & 0xFF);
+  result_array[2] = static_cast<uint8>((x >> 8) & 0xFF);
+  result_array[3] = static_cast<uint8>(x & 0xFF);
+  return result;
+}
 
 // ===================================================================
 // Shutdown support.

@@ -3,9 +3,9 @@ Google-ProtoBuf
 
 Google Protocol Buffers - Google's data interchange format
 
-Copyright 2008 Google Inc.
-
 http://code.google.com/apis/protocolbuffers/
+
+Copyright 2008 Google Inc.
 
 ## What is it?
 Protocol Buffers are a way of encoding structured data in an efficient yet extensible format. Google uses Protocol Buffers for almost all of its internal RPC protocols and file formats.
