@@ -3,6 +3,8 @@ Google-ProtoBuf
 
 Google Protocol Buffers - Google's data interchange format
 
+http://code.google.com/p/protobuf/
+
 http://code.google.com/apis/protocolbuffers/
 
 Copyright 2008 Google Inc.
